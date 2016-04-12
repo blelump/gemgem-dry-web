@@ -5,7 +5,7 @@ module Simple
     setting :auto_register, 'lib'
 
     configure do
-      load_paths!('lib')
+      load_paths!('lib', 'core')
     end
   end
 end

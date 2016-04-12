@@ -1,7 +1,7 @@
 require 'entities/user'
 
 RSpec.describe Entities::User do
-  subject(:user) { Entities::User.new(1, 'Jane') }
+  subject(:user) { Entities::User.new(id: 1, name: 'Jane', email: 'jane@example.com', encrypted_password: 'asdf1234') }
 
   describe '#id' do
     it 'works' do

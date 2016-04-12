@@ -1,5 +1,6 @@
 require 'rom'
 require 'rom-repository'
+require_relative '../simple/types'
 
 Simple::Container.namespace('persistence') do |container|
   config = ROM::Configuration.new(:sql, container.options.database_url)

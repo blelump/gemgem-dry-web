@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 ruby '2.3.0'
 
 gem 'dry-web', github: 'dry-rb/dry-web', branch: 'master'
+gem 'dry-data'
 gem 'pry'
 gem 'pry-byebug', platform: 'mri'
 gem 'rake'
