@@ -1,4 +1,4 @@
 development:
-  SOMETHING: 'goes-here'
+  DATABASE_URL: 'sqlite://db/development.sqlite3'
 test:
-  SOMETHING: 'goes-here'
+  DATABASE_URL: 'sqlite://db/test.sqlite3'

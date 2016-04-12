@@ -13,9 +13,78 @@ GIT
       roda (~> 2.7)
       tilt (~> 2.0)
 
+GIT
+  remote: git://github.com/rom-rb/rom-mapper.git
+  revision: 5fecb06bd0cdf227b9f0289c2870ebc4a88f0502
+  branch: master
+  specs:
+    rom-mapper (0.3.0)
+      dry-equalizer (~> 0.2)
+      rom-support (~> 1.0.0)
+      transproc (~> 0.4.0)
+
+GIT
+  remote: git://github.com/rom-rb/rom-repository.git
+  revision: 8cfbbb2b29948b110b40ca4606b7c91636711a96
+  branch: master
+  specs:
+    rom-repository (0.2.0)
+      anima (~> 0.2, >= 0.2)
+      concurrent-ruby (~> 1.0)
+      rom (~> 1.0.0)
+      rom-mapper (~> 0.3.0)
+      rom-support (~> 1.0.0)
+
+GIT
+  remote: git://github.com/rom-rb/rom-sql.git
+  revision: e0ff924f55df543a3249b3d7f6e876eda3fd7469
+  branch: master
+  specs:
+    rom-sql (0.7.0)
+      dry-equalizer (~> 0.2)
+      dry-types (~> 0.7)
+      rom (~> 1.0.0)
+      sequel (~> 4.18)
+
+GIT
+  remote: git://github.com/rom-rb/rom-support.git
+  revision: 3018f392c0378354e06ba912e5582749d15c6030
+  branch: master
+  specs:
+    rom-support (1.0.0)
+      dry-equalizer (~> 0.2)
+      transproc (~> 0.4.0)
+      wisper (~> 1.6, >= 1.6.0)
+
+GIT
+  remote: git://github.com/rom-rb/rom.git
+  revision: 3569222f86840d6d963505f064526eaad6c907a7
+  branch: master
+  specs:
+    rom (1.0.0)
+      dry-equalizer (~> 0.2)
+      dry-types (~> 0.7)
+      rom-mapper (~> 0.3.0)
+      rom-support (~> 1.0.0)
+
+GIT
+  remote: git://github.com/solnic/transproc.git
+  revision: ef7cbef5d22fffd53beadf5c28abdb4975a02c45
+  branch: master
+  specs:
+    transproc (0.4.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
+    abstract_type (0.0.7)
+    adamantium (0.2.0)
+      ice_nine (~> 0.11.0)
+      memoizable (~> 0.4.0)
+    anima (0.3.0)
+      abstract_type (~> 0.0.7)
+      adamantium (~> 0.2)
+      equalizer (~> 0.0.11)
     byebug (8.2.4)
     coderay (1.1.1)
     concurrent-ruby (1.0.1)
@@ -33,15 +102,28 @@ GEM
       concurrent-ruby (~> 1.0)
       dry-configurable (~> 0.1, >= 0.1.3)
     dry-equalizer (0.2.0)
+    dry-logic (0.2.2)
+      dry-container (~> 0.2, >= 0.2.6)
+      dry-equalizer (~> 0.2)
     dry-transaction (0.6.0)
       dry-container (>= 0.2.8)
       kleisli
       wisper (>= 1.6.0)
+    dry-types (0.7.1)
+      concurrent-ruby (~> 1.0)
+      dry-configurable (~> 0.1)
+      dry-container (~> 0.3)
+      dry-equalizer (~> 0.2)
+      dry-logic (~> 0.2, >= 0.2.0)
+      inflecto (~> 0.0.0, >= 0.0.2)
+      kleisli (~> 0.2)
     dry-view (0.1.0)
       dry-configurable (~> 0.1)
       dry-equalizer (~> 0.2)
       inflecto (~> 0)
       tilt (~> 2.0)
+    equalizer (0.0.11)
+    ice_nine (0.11.2)
     inflecto (0.0.2)
     kleisli (0.2.7)
     memoizable (0.4.2)
@@ -73,7 +155,9 @@ GEM
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.4.0)
     rspec-support (3.4.1)
+    sequel (4.33.0)
     slop (3.6.0)
+    sqlite3 (1.3.11)
     thread_safe (0.3.5)
     tilt (2.0.2)
     wisper (1.6.1)
@@ -87,7 +171,14 @@ DEPENDENCIES
   pry-byebug
   rack-test
   rake
+  rom!
+  rom-mapper!
+  rom-repository!
+  rom-sql!
+  rom-support!
   rspec
+  sqlite3
+  transproc!
 
 BUNDLED WITH
    1.11.2
