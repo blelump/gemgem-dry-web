@@ -2,11 +2,16 @@ source 'https://rubygems.org'
 
 ruby '2.3.0'
 
-gem 'dry-web', github: 'dry-rb/dry-web', branch: 'master'
-gem 'dry-data'
+group :dry do
+  gem 'dry-web', github: 'dry-rb/dry-web', branch: 'master'
+  gem 'dry-data'
+  gem 'dry-validation'
+end
+
 gem 'pry'
 gem 'pry-byebug', platform: 'mri'
 gem 'rake'
+gem 'bcrypt'
 
 group :rom do
   gem 'sqlite3'
@@ -18,7 +23,14 @@ group :rom do
   gem 'rom-mapper', github: 'rom-rb/rom-mapper', branch: 'master'
 end
 
+group :trailblazer do
+  gem 'trailblazer'
+  gem 'reform', github: 'apotonick/reform', branch: '2-2'
+  gem 'multi_json'
+end
+
 group :test do
   gem 'rack-test'
   gem 'rspec'
+  gem 'database_cleaner'
 end

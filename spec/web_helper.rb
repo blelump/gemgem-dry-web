@@ -1,14 +1,8 @@
-require 'spec_helper'
+require_relative 'db_helper'
 
 require 'rack/test'
 
-require_relative '../core/boot'
-
-module AppHelper
-  def app
-    Simple::Application.app
-  end
-end
+require SPEC_ROOT.join('../core/boot').realpath
 
 RSpec.configure do |config|
   config.before(:suite) do
@@ -16,5 +10,4 @@ RSpec.configure do |config|
   end
 
   config.include Rack::Test::Methods, type: :request
-  config.include AppHelper, type: :request
 end
