@@ -6,16 +6,6 @@ module Entities
       include Trailblazer::Operation::Model
       include Trailblazer::Operation::Representer
       include Trailblazer::Operation::Representer::Deserializer::Hash
-      include Simple::Functions
-      ##
-      # TODO: Would love to be able to do this, but Dry::AutoInject breaks operations by doing some fancy overriding of ::new
-      ##
-      # include Simple::Import(
-      #   'user.encrypt_password',
-      #   'persistence.persist_user'
-      # )
-
-      model Entities::User, :create
 
       contract do
         feature Reform::Form::Dry::Validations
@@ -40,8 +30,7 @@ module Entities
 
       def process(params)
         validate(params) do |f|
-          f.encrypted_password = encrypt_password.(params[:password])
-          @model               = self.class.model_class.new(persist_user.(t(:symbolize_keys)[f.to_nested_hash]))
+          @model = CreateUser.new.call(f)
         end
       end
 
@@ -55,14 +44,22 @@ module Entities
         OpenStruct.new
       end
 
-      def encrypt_password
-        Simple::Application.config.container.resolve('user.encrypt_password')
-      end
+      class CreateUser
+        include Simple::Functions
+        include Simple::Import(
+          'user.encrypt_password',
+          'persistence.persist_user'
+        )
 
-      def persist_user
-        Simple::Application.config.container.resolve('persistence.persist_user')
-      end
+        def call(f)
+          params = prepare_attributes(t(:symbolize_keys)[f.to_nested_hash])
+          Entities::User.new(persist_user.(params))
+        end
 
+        def prepare_attributes(params)
+          params.merge(encrypted_password: encrypt_password.(params[:password]))
+        end
+      end
     end
   end
 end
